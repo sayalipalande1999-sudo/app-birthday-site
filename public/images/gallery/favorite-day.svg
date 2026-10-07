@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-labelledby="title">
+  <title id="title">Illustrated sunset with two hearts placeholder</title>
+  <defs>
+    <linearGradient id="sunset" x2="0" y2="1">
+      <stop stop-color="#eab7c5"/>
+      <stop offset=".58" stop-color="#f5c9a9"/>
+      <stop offset="1" stop-color="#c98583"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#sunset)"/>
+  <circle cx="600" cy="390" r="176" fill="#fff0ce" opacity=".92"/>
+  <path d="M0 564q190-105 390 0t410 0 400 0v236H0z" fill="#8a6a7c"/>
+  <path d="M0 627q205-72 410 0t410 0 380 0v173H0z" fill="#685b71"/>
+  <path d="M485 362c0-48 67-68 115-10 48-58 115-38 115 10 0 68-115 135-115 135s-115-67-115-135z" fill="#cf7185"/>
+  <path d="M540 555q60-100 120 0l25 96H515z" fill="#5e485b"/>
+  <path d="M0 706q230-32 460 0t460 0 280 0" fill="none" stroke="#f6dcc2" stroke-width="9" opacity=".7"/>
+</svg>

@@ -1,0 +1,28 @@
+{
+  "gallery": [
+    {
+      "id": "together-always",
+      "thumbnail": "images/home/birthday-background.jpg",
+      "fullImage": "images/home/birthday-background.jpg",
+      "alt": "A couple sitting close together on outdoor stone steps.",
+      "preview": "My favorite place is beside you ♡",
+      "note": "A quiet little moment together that means the world to me. Happy birthday, my love."
+    },
+    {
+      "id": "birthday-moment",
+      "thumbnail": "images/gallery/birthday-moment.svg",
+      "fullImage": "images/gallery/birthday-moment.svg",
+      "alt": "Illustrated birthday cake and balloons placeholder; replace with your own photo.",
+      "preview": "A little birthday wish, just for you.",
+      "note": "Replace this example with a favorite photo and the story you want to remember together."
+    },
+    {
+      "id": "favorite-day",
+      "thumbnail": "images/gallery/favorite-day.svg",
+      "fullImage": "images/gallery/favorite-day.svg",
+      "alt": "Illustrated sunset and two hearts placeholder; replace with your own photo.",
+      "preview": "One of my favorite days with you.",
+      "note": "Add your own note here: a small detail from a day together that still makes you smile."
+    }
+  ]
+}
