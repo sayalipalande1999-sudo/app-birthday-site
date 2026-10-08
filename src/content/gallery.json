@@ -56,6 +56,34 @@
       "fullImage": "images/gallery/photo-7.jpeg",
       "preview": "I love you and I always will..",
       "note": "I love you and I always will.."
+    },
+    {
+      "id": "day-9",
+      "thumbnail": "images/gallery/photo-13.jpeg",
+      "fullImage": "images/gallery/photo-13.jpeg",
+      "preview": "Remember this day? Let me see if you can remember.",
+      "note": "Remember this day?  Let me see if you can remember."
+    },
+    {
+      "id": "day-10",
+      "thumbnail": "images/gallery/photo-14.jpeg",
+      "fullImage": "images/gallery/photo-14.jpeg",
+      "preview": "The thing i love the most getting from you is ...",
+      "note": "Forehead kisses!!"
+    },
+    {
+      "id": "day-11",
+      "thumbnail": "images/gallery/photo-15.jpeg",
+      "fullImage": "images/gallery/photo-15.jpeg",
+      "preview": "What was the joke about?",
+      "note": "I guess we were just doing it for the camera."
+    },
+    {
+      "id": "day-12",
+      "thumbnail": "images/gallery/photo-16.jpeg",
+      "fullImage": "images/gallery/photo-16.jpeg",
+      "preview": "One of the best days of my life.",
+      "note": "When you lit up the sky on my birthday."
     }
   ]
 }
