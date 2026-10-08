@@ -47,7 +47,6 @@ export function Gallery({ onContinueToLetter }) {
                     onError={() => markImageFailed(photo.id)}
                   />
                 )}
-                <span className="photo-open-hint" aria-hidden="true">View ♥</span>
               </button>
               <p className="photo-note-preview">{photo.preview}</p>
             </article>

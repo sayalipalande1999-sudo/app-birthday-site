@@ -59,6 +59,20 @@ An AWS account and an owned, registered domain are required. AWS hosting, DNS, a
 
 The included `.github/workflows/pages.yml` builds and deploys `dist/` when pushed to `main`. Create a GitHub repository for this project, push its `main` branch, and enable GitHub Actions as the Pages build-and-deploy source in repository settings. The workflow sets `BASE_PATH` to the repository name for project sites.
 
+To publish future updates from PowerShell, open a terminal in the project directory, review your changes, run the checks, then push to `main`:
+
+```powershell
+git status
+npm.cmd test
+npm.cmd run lint
+npm.cmd run build
+git add -A
+git commit -m "Describe your changes"
+git push origin main
+```
+
+Pushing to `main` automatically starts the **Deploy birthday site to GitHub Pages** workflow. In the repository's **Actions** tab, wait for that run to finish successfully before checking the live site. Everything in the repository—including files under `public/` and client-side content—is publicly accessible after deployment.
+
 To publish manually with `gh-pages`, install it as a development dependency and run:
 
 ```powershell
