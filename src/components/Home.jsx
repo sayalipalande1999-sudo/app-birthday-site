@@ -1,11 +1,11 @@
 import { publicAsset } from '../content/publicAsset.js'
 
-export function Home({ greeting, onOpenSurprise }) {
+export function Home({ greeting, onOpenPhotos }) {
   return (
     <section className="home-view">
       <img
         className="home-background"
-        src={publicAsset('images/home/birthday-background.jpg')}
+        src={publicAsset('images/home/birthday-background.jpeg')}
         alt=""
         aria-hidden="true"
         fetchPriority="high"
@@ -26,9 +26,9 @@ export function Home({ greeting, onOpenSurprise }) {
         <div className="home-divider" aria-hidden="true"><span>♡</span></div>
         <button
           className="button button-primary home-cta"
-          onClick={onOpenSurprise}
+          onClick={onOpenPhotos}
         >
-          Tap to open <span aria-hidden="true">→</span>
+          Explore our photos <span aria-hidden="true">→</span>
         </button>
       </div>
       <span className="home-bottom-mark" aria-hidden="true">⌄</span>

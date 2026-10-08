@@ -4,7 +4,7 @@ import { publicAsset } from '../content/publicAsset.js'
 import galleryContent from '../content/gallery.json'
 import '../styles/gallery.css'
 
-export function Gallery() {
+export function Gallery({ onContinueToLetter }) {
   const [photoIndex, setPhotoIndex] = useState(null)
   const [failedImages, setFailedImages] = useState(() => new Set())
   const photos = galleryContent.gallery
@@ -69,6 +69,15 @@ export function Gallery() {
           }
         />
       )}
+      <div className="gallery-actions">
+        <button
+          className="button button-primary"
+          type="button"
+          onClick={onContinueToLetter}
+        >
+          Continue to the letter <span aria-hidden="true">→</span>
+        </button>
+      </div>
     </section>
   )
 }

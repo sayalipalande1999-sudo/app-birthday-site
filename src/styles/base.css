@@ -34,6 +34,10 @@ body:has(.app-shell.is-gallery) {
   background: #422a28;
 }
 
+body:has(.app-shell.is-envelope) {
+  background: #e6e4cf;
+}
+
 button,
 input {
   font: inherit;
@@ -125,6 +129,52 @@ input:focus-visible {
 
 .app-shell.is-gallery .site-footer {
   color: rgb(255 240 229 / 72%);
+}
+
+.app-shell.is-envelope {
+  --rose: #84905b;
+  --rose-deep: #495735;
+  --rose-soft: #e4e7d4;
+  --rose-border: #c7c8a9;
+  --cream: #f5f0df;
+  --ink: #363b2d;
+  --muted: #687056;
+  --serif: 'Palatino Linotype', 'Book Antiqua', Georgia, serif;
+  color: var(--ink);
+  font-family: 'Palatino Linotype', 'Book Antiqua', Georgia, serif;
+}
+
+.app-shell.is-envelope .site-header {
+  border-color: rgb(111 121 77 / 28%);
+  background: #e6e4cf;
+}
+
+.app-shell.is-envelope .site-footer {
+  color: var(--muted);
+  font-family: var(--serif);
+}
+
+.app-shell.is-surprise {
+  --rose: #d4a321;
+  --rose-deep: #76540b;
+  --rose-soft: #f4e5a9;
+  --rose-border: #dfc66c;
+  --cream: #fbf4d9;
+  --ink: #4b3b17;
+  --muted: #756333;
+  background:
+    radial-gradient(ellipse at 10% 12%, rgb(255 248 205 / 82%), transparent 32rem),
+    radial-gradient(ellipse at 92% 80%, rgb(225 185 58 / 24%), transparent 30rem),
+    linear-gradient(145deg, #f3e5aa 0%, #fbf3d5 52%, #ecdc99 100%);
+  color: var(--ink);
+}
+
+.app-shell.is-surprise .site-header {
+  border-color: rgb(118 84 11 / 25%);
+}
+
+.app-shell.is-surprise .site-footer {
+  color: var(--muted);
 }
 
 .site-header {

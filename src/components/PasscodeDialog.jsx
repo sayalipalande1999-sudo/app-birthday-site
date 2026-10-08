@@ -29,7 +29,7 @@ export function PasscodeDialog({ onClose, onUnlock }) {
       return
     }
 
-    setError('That code wasn’t quite right. Try again?')
+    setError('Oops. Not there yet. ')
   }
 
   return (
@@ -56,7 +56,7 @@ export function PasscodeDialog({ onClose, onUnlock }) {
         </button>
         <span className="dialog-heart" aria-hidden="true">♡</span>
         <p className="eyebrow">Just between us</p>
-        <h2 id="passcode-title">A little secret</h2>
+        <h2 id="passcode-title">A little surprise</h2>
         <p>Enter your special code to see what’s inside.</p>
         <form onSubmit={handleSubmit}>
           <label className="sr-only" htmlFor="secret-passcode">Passcode</label>
@@ -75,8 +75,13 @@ export function PasscodeDialog({ onClose, onUnlock }) {
             aria-describedby={error ? 'passcode-error' : undefined}
           />
           {error && (
-            <p className="form-error" id="passcode-error" role="alert">
-              {error}
+            <p
+              className="form-error"
+              id="passcode-error"
+              role="alert"
+              aria-live="assertive"
+            >
+              <span aria-hidden="true">!</span> {error}
             </p>
           )}
           <button className="button button-primary" type="submit">

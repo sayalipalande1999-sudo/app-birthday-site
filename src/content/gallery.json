@@ -1,28 +1,61 @@
 {
   "gallery": [
     {
-      "id": "together-always",
-      "thumbnail": "images/home/birthday-background.jpg",
-      "fullImage": "images/home/birthday-background.jpg",
-      "alt": "A couple sitting close together on outdoor stone steps.",
-      "preview": "My favorite place is beside you ♡",
-      "note": "A quiet little moment together that means the world to me. Happy birthday, my love."
+      "id": "day-1",
+      "thumbnail": "images/gallery/photo-1.jpeg",
+      "fullImage": "images/gallery/photo-1.jpeg",
+      "preview": "The day it all began♡",
+      "note": "I gave you my scarf so that I'll have a reason to meet you again for taking it back."
     },
     {
       "id": "birthday-moment",
-      "thumbnail": "images/gallery/birthday-moment.svg",
-      "fullImage": "images/gallery/birthday-moment.svg",
-      "alt": "Illustrated birthday cake and balloons placeholder; replace with your own photo.",
-      "preview": "A little birthday wish, just for you.",
-      "note": "Replace this example with a favorite photo and the story you want to remember together."
+      "thumbnail": "images/gallery/photo-6.jpeg",
+      "fullImage": "images/gallery/photo-6.jpeg",
+      "preview": "Our first ever goa trip.",
+      "note": "Our first ever goa trip"
     },
     {
       "id": "favorite-day",
-      "thumbnail": "images/gallery/favorite-day.svg",
-      "fullImage": "images/gallery/favorite-day.svg",
-      "alt": "Illustrated sunset and two hearts placeholder; replace with your own photo.",
+      "thumbnail": "images/gallery/photo-10.jpg",
+      "fullImage": "images/gallery/photo-10.jpg",
       "preview": "One of my favorite days with you.",
-      "note": "Add your own note here: a small detail from a day together that still makes you smile."
+      "note": "Yet another trip to Ooty, this time with a little more adventure and a lot more laughter."
+    }
+    ,
+    {
+      "id": "day-4",
+      "thumbnail": "images/gallery/photo-11.jpeg",
+      "fullImage": "images/gallery/photo-11.jpeg",
+      "preview": "The day you held my hand for the first time while driving the car.",
+      "note": "The day you held my hand for the first time while driving the car."
+    },
+    {
+      "id": "day-5",
+      "thumbnail": "images/gallery/photo-12.jpeg",
+      "fullImage": "images/gallery/photo-12.jpeg",
+      "preview": "The first time we met after \"Officially\" being together.",
+      "note": "The first time we met after \"Officially\" being together."
+    },
+    {
+      "id": "day-6",
+      "thumbnail": "images/gallery/photo-4.jpeg",
+      "fullImage": "images/gallery/photo-4.jpeg",
+      "preview": "Here to more such goofy moments together.",
+      "note": "Here to more such goofy moments together."
+    },
+    {
+      "id": "day-7",
+      "thumbnail": "images/gallery/photo-8.jpeg",
+      "fullImage": "images/gallery/photo-8.jpeg",
+      "preview": "Lets re-live this pune trip tomorrow.",
+      "note": "Lets re-live this pune trip tomorrow."
+    },
+    {
+      "id": "day-8",
+      "thumbnail": "images/gallery/photo-7.jpeg",
+      "fullImage": "images/gallery/photo-7.jpeg",
+      "preview": "I love you and I always will..",
+      "note": "I love you and I always will.."
     }
   ]
 }

@@ -16,7 +16,7 @@ function App() {
   const [passcodeOpen, setPasscodeOpen] = useState(
     () => getCurrentRoute() === ROUTES.secret,
   )
-  const [revealedChits, setRevealedChits] = useState(() => new Set())
+  const [selectedChits, setSelectedChits] = useState(() => new Map())
 
   useEffect(() => {
     const syncRoute = () => {
@@ -45,31 +45,31 @@ function App() {
     navigate(ROUTES.secret)
   }
 
-  function revealChit(id) {
-    setRevealedChits((current) => {
-      const next = new Set(current)
-      next.add(id)
+  function selectChit(sectionId, chitId) {
+    setSelectedChits((current) => {
+      const next = new Map(current)
+      next.set(sectionId, chitId)
       return next
     })
   }
 
   return (
     <div
-      className={`app-shell${route === ROUTES.home ? ' is-home' : ''}${route === ROUTES.gallery ? ' is-gallery' : ''}`}
+      className={`app-shell${route === ROUTES.home ? ' is-home' : ''}${route === ROUTES.gallery ? ' is-gallery' : ''}${route === ROUTES.envelope ? ' is-envelope' : ''}${route === ROUTES.secret || passcodeOpen ? ' is-surprise' : ''}`}
     >
       <header className="site-header">
         <a className="wordmark" href="#/" aria-label="Birthday surprise home">
-          for you, always
+          Hey,there!
         </a>
         <nav className="site-nav" aria-label="Main navigation">
           <button type="button" onClick={() => navigate(ROUTES.home)}>
             Home
           </button>
-          <button type="button" onClick={() => navigate(ROUTES.envelope)}>
-            Letter
-          </button>
           <button type="button" onClick={() => navigate(ROUTES.gallery)}>
             Photos
+          </button>
+          <button type="button" onClick={() => navigate(ROUTES.envelope)}>
+            Letter
           </button>
           <button
             type="button"
@@ -79,7 +79,7 @@ function App() {
                 : setPasscodeOpen(true)
             }
           >
-            Secret
+            Surprise
           </button>
         </nav>
       </header>
@@ -88,7 +88,7 @@ function App() {
         {route === ROUTES.home && (
           <Home
             greeting={birthday.greeting}
-            onOpenSurprise={() => navigate(ROUTES.envelope)}
+            onOpenPhotos={() => navigate(ROUTES.gallery)}
           />
         )}
         {route === ROUTES.envelope && (
@@ -96,14 +96,20 @@ function App() {
             message={birthday.envelopeMessage}
             opened={envelopeOpened}
             onOpen={() => setEnvelopeOpened(true)}
-            onViewPhotos={() => navigate(ROUTES.gallery)}
+            onOpenSurprise={() =>
+              secretUnlocked
+                ? navigate(ROUTES.secret)
+                : setPasscodeOpen(true)
+            }
           />
         )}
-        {route === ROUTES.gallery && <Gallery />}
+        {route === ROUTES.gallery && (
+          <Gallery onContinueToLetter={() => navigate(ROUTES.envelope)} />
+        )}
         {route === ROUTES.secret && secretUnlocked && (
           <SecretSection
-            revealedChits={revealedChits}
-            onReveal={revealChit}
+            selectedChits={selectedChits}
+            onSelect={selectChit}
           />
         )}
       </main>

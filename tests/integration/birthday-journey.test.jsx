@@ -2,95 +2,99 @@ import { render, screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { describe, expect, it } from 'vitest'
 import App from '../../src/app/App.jsx'
+import sectionsContent from '../../src/content/secrets.json'
 
 describe('birthday surprise journey', () => {
-  it('opens the letter, browses photos, unlocks the secrets, and preserves revealed chits', async () => {
+  it('unlocks this-or-that choices and remembers one image choice per category', async () => {
     const user = userEvent.setup()
     render(<App />)
 
     expect(screen.getByRole('heading', { name: 'Happy Birthday' }))
       .toBeInTheDocument()
-    expect(document.querySelector('.app-shell')).toHaveClass('is-home')
     expect(document.querySelector('.home-background'))
-      .toHaveAttribute('src', '/images/home/birthday-background.jpg')
-    await user.click(screen.getByRole('button', { name: /Tap to open/ }))
+      .toHaveAttribute('src', '/images/home/birthday-background.jpeg')
+    expect(
+      within(screen.getByRole('navigation', { name: 'Main navigation' }))
+        .getAllByRole('button')
+        .map((button) => button.textContent),
+    ).toEqual(['Home', 'Photos', 'Letter', 'Surprise'])
+
+    await user.click(screen.getByRole('button', { name: 'Explore our photos' }))
+    expect(window.location.hash).toBe('#/gallery')
+    expect(screen.getByRole('heading', { name: 'Our memories' }))
+      .toBeInTheDocument()
+
+    await user.click(document.querySelector('.photo-card-image'))
+    expect(screen.getByRole('dialog', { name: /Photo:/ })).toBeInTheDocument()
+    await user.click(screen.getByRole('button', { name: 'Close photo' }))
+    await user.click(
+      screen.getByRole('button', { name: 'Continue to the letter' }),
+    )
     expect(window.location.hash).toBe('#/envelope')
 
     await user.click(
-      await screen.findByRole('button', { name: 'Open the birthday letter' }),
+      screen.getByRole('button', { name: 'Open the birthday letter' }),
     )
-    expect(
-      screen.getByText(/Happy Birthday, my love —/),
-    ).toBeInTheDocument()
-    expect(
-      screen.getByText(/how deeply you are loved\.$/),
-    ).toBeInTheDocument()
-    expect(
-      screen.getByRole('button', { name: 'Letter opened' }),
-    ).toHaveAttribute('aria-expanded', 'true')
+    expect(document.querySelector('.envelope-scene')).toHaveClass('is-open')
+    expect(document.querySelector('.letter-reveal'))
+      .toHaveAttribute('aria-hidden', 'false')
+    expect(screen.getByText('With all my love,')).toBeInTheDocument()
 
-    await user.click(screen.getByRole('button', { name: /View Photos/ }))
-    expect(window.location.hash).toBe('#/gallery')
-    expect(screen.getAllByRole('article', { name: '' })).toHaveLength(3)
-
-    await user.click(
-      screen.getByRole('button', { name: /Open photo: A couple sitting close together/ }),
-    )
-    expect(
-      within(screen.getByRole('dialog')).getByText(
-        'A quiet little moment together that means the world to me. Happy birthday, my love.',
-      ),
-    ).toBeInTheDocument()
-    await user.click(
-      within(screen.getByRole('dialog')).getByRole('button', { name: 'Next photo' }),
-    )
-    expect(
-      within(screen.getByRole('dialog')).getByText(
-        'Replace this example with a favorite photo and the story you want to remember together.',
-      ),
-    ).toBeInTheDocument()
-    await user.click(
-      within(screen.getByRole('dialog')).getByRole('button', { name: 'Next photo' }),
-    )
-    expect(
-      within(screen.getByRole('dialog')).getByText(
-        'Add your own note here: a small detail from a day together that still makes you smile.',
-      ),
-    ).toBeInTheDocument()
-    await user.click(
-      within(screen.getByRole('dialog')).getByRole('button', { name: 'Close photo' }),
-    )
-    expect(screen.getAllByText(/favorite story: us/)).toHaveLength(1)
-
-    await user.click(screen.getByRole('button', { name: 'Secret' }))
-    await user.type(screen.getByLabelText('Passcode'), '0000')
+    await user.click(screen.getByRole('button', { name: 'Open your surprise' }))
+    expect(screen.getByRole('dialog', { name: 'A little surprise' }))
+      .toBeInTheDocument()
+    await user.type(screen.getByLabelText('Passcode'), 'not-the-code')
     await user.click(screen.getByRole('button', { name: 'Unlock the surprise' }))
-    expect(screen.getByRole('alert')).toHaveTextContent('Try again')
-    expect(
-      screen.queryByText('My favorite part of that day was laughing with you.'),
-    ).not.toBeInTheDocument()
+    expect(screen.getByRole('alert'))
+      .toHaveTextContent('Oops. Not there yet.')
+    expect(screen.getByLabelText('Passcode')).toHaveAttribute('aria-invalid', 'true')
 
     await user.clear(screen.getByLabelText('Passcode'))
-    await user.type(screen.getByLabelText('Passcode'), '1234')
+    await user.type(screen.getByLabelText('Passcode'), 'Green@welcome27')
     await user.click(screen.getByRole('button', { name: 'Unlock the surprise' }))
 
-    expect(await screen.findByRole('heading', { name: 'A few little secrets' }))
+    expect(await screen.findByRole('heading', { name: 'This or that' }))
       .toBeInTheDocument()
-    expect(document.querySelectorAll('.secret-subsection')).toHaveLength(4)
-    expect(document.querySelectorAll('.chit-button')).toHaveLength(8)
 
-    await user.click(screen.getAllByRole('button', { name: 'Tap to reveal' })[0])
-    const revealedMessage =
-      'My favorite part of that day was laughing with you.'
-    expect(screen.getByText(revealedMessage)).toBeInTheDocument()
-    await user.click(screen.getAllByRole('button', { name: 'Your note' })[0])
-    expect(screen.getByText(revealedMessage)).toBeInTheDocument()
+    const surpriseSections = document.querySelectorAll('.secret-subsection')
+    expect(surpriseSections).toHaveLength(sectionsContent.sections.length)
 
-    await user.click(screen.getAllByRole('button', { name: 'A little mystery' })[0])
-    expect(screen.getByRole('status')).toHaveTextContent('Not available')
+    for (const [index, section] of surpriseSections.entries()) {
+      const category = sectionsContent.sections[index]
+      const firstChoice = within(section).getByRole('button', {
+        name: category.chits[0].label,
+      })
+      const secondChoice = within(section).getByRole('button', {
+        name: category.chits[1].label,
+      })
+
+      await user.click(secondChoice)
+      expect(secondChoice).toHaveAttribute('aria-pressed', 'true')
+      expect(firstChoice).toHaveAttribute('aria-pressed', 'false')
+      expect(
+        within(section).getByRole('img', { name: category.chits[1].content.alt }),
+      ).toBeInTheDocument()
+    }
+
+    const firstSection = surpriseSections[0]
+    const firstCategory = sectionsContent.sections[0]
+    await user.click(
+      within(firstSection).getByRole('button', {
+        name: firstCategory.chits[0].label,
+      }),
+    )
+    expect(
+      within(firstSection).getByRole('img', {
+        name: firstCategory.chits[0].content.alt,
+      }),
+    ).toBeInTheDocument()
 
     await user.click(screen.getByRole('button', { name: 'Home' }))
-    await user.click(screen.getByRole('button', { name: 'Secret' }))
-    expect(screen.getByText(revealedMessage)).toBeInTheDocument()
+    await user.click(screen.getByRole('button', { name: 'Surprise' }))
+    expect(
+      within(document.querySelectorAll('.secret-subsection')[0]).getByRole('img', {
+        name: firstCategory.chits[0].content.alt,
+      }),
+    ).toBeInTheDocument()
   })
 })

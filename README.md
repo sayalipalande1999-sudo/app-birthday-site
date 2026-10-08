@@ -1,6 +1,6 @@
 # Birthday Site
 
-A small, mobile-first React birthday surprise built with Vite. All content and media are bundled as public static files. The Secret passcode is a playful reveal gate, **not security**: a visitor can inspect the JavaScript and content files and find it.
+A small, mobile-first React birthday surprise built with Vite. All content and media are bundled as public static files. The Surprise passcode is a playful reveal gate, **not security**: a visitor can inspect the JavaScript and content files and find it.
 
 ## Run locally
 
@@ -15,13 +15,14 @@ npm run dev
 
 - Edit the greeting and envelope message in `src/content/birthday.json`.
 - Replace `public/images/home/birthday-background.jpg` to change the home-page background. The original image supplied in `photo-gallery/IMG_2185.jpg` is kept unchanged.
+- Add your letter-page background image as `public/images/letter/letter-background.jpg`. Until you add it, the letter page uses an olive-and-parchment gradient. The letter page uses system serif fonts for its antique style and does not require a downloaded font.
 - Replace the demo gallery entries in `src/content/gallery.json` with your own. Each record needs a unique `id`, thumbnail and full image paths relative to `public/`, meaningful `alt` text, a one-line `preview`, and a complete `note`.
 - Put optimized gallery images in `public/images/gallery/`. The home background photo is also included as the first gallery memory. The included SVGs are illustrative placeholders; replace them and their notes before sharing.
-- Edit the four labels and revealable content in `src/content/secrets.json`. Keep exactly four sections, two chits per section, and one `"reveal"` plus one `"unavailable"` chit in each section. The bundled secret image is also a placeholder.
-- Change `src/content/config.js` only if you want a different casual reveal code. The demo code is `1234`. Anyone who can load the site can inspect it, so do not use this gate for private photos or sensitive material.
+- Edit the four this-or-that categories and their two image choices in `src/content/secrets.json`. Each category allows one selected choice; replace each choice's image path with your own image under `public/`.
+- Change `src/content/config.js` only if you want a different casual reveal code. Anyone who can load the site can inspect it, so do not use this gate for private photos or sensitive material.
 - Public media and every bundled JSON file are downloadable. No content-management screen or account is provided.
 
-Gallery and secret image paths are relative to `public/` and resolved with Vite's `BASE_URL`, so they work at a repository subpath too. Compress photos to mobile-friendly WebP or JPEG sizes before adding them.
+Gallery and content image paths are relative to `public/` and resolved with Vite's `BASE_URL`, so they work at a repository subpath too. Compress photos to mobile-friendly WebP or JPEG sizes before adding them.
 
 ## Build, lint, and preview
 

@@ -1,8 +1,14 @@
 import '../styles/envelope.css'
+import { publicAsset } from '../content/publicAsset.js'
 
-export function Envelope({ message, opened, onOpen, onViewPhotos }) {
+export function Envelope({ message, opened, onOpen, onOpenSurprise }) {
   return (
-    <section className="envelope-view">
+    <section
+      className="envelope-view"
+      style={{
+        '--letter-background-image': `url("${publicAsset('images/letter/letter-background.jpg')}")`,
+      }}
+    >
       <p className="eyebrow">A letter for you</p>
       <h1>Something from my heart</h1>
       <div className={`envelope-scene ${opened ? 'is-open' : ''}`}>
@@ -12,7 +18,9 @@ export function Envelope({ message, opened, onOpen, onViewPhotos }) {
           inert={!opened}
         >
           <div className="letter-paper">
+            <p className="letter-greeting">To my favorite person</p>
             <p>{message}</p>
+            <p className="letter-signoff">With all my love, <span aria-hidden="true">♥</span></p>
           </div>
         </div>
         <button
@@ -22,7 +30,6 @@ export function Envelope({ message, opened, onOpen, onViewPhotos }) {
           aria-label={opened ? 'Letter opened' : 'Open the birthday letter'}
         >
           <span className="envelope-back" aria-hidden="true" />
-          <span className="envelope-letter" aria-hidden="true" />
           <span className="envelope-flap" aria-hidden="true" />
           <span className="envelope-front" aria-hidden="true" />
           {!opened && <span className="envelope-seal" aria-hidden="true">♥</span>}
@@ -33,12 +40,16 @@ export function Envelope({ message, opened, onOpen, onViewPhotos }) {
       </div>
       {opened ? (
         <div className="envelope-actions">
-          <button className="button button-primary" onClick={onViewPhotos}>
-            View Photos <span aria-hidden="true">→</span>
+          <button
+            className="button button-primary"
+            type="button"
+            onClick={onOpenSurprise}
+          >
+            Open your surprise <span aria-hidden="true">→</span>
           </button>
         </div>
       ) : (
-        <p className="envelope-hint">Tap the envelope to open your letter</p>
+        <p className="envelope-hint">Tap the seal to open your letter</p>
       )}
     </section>
   )

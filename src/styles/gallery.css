@@ -118,6 +118,22 @@
   white-space: nowrap;
 }
 
+.gallery-actions {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0 0.5rem;
+}
+
+.app-shell.is-gallery .gallery-actions .button-primary {
+  border-color: rgb(255 240 229 / 28%);
+  background: #f1e3d5;
+  color: #563730;
+}
+
+.app-shell.is-gallery .gallery-actions .button-primary:hover {
+  background: #fff0e5;
+}
+
 .empty-state {
   max-width: 32rem;
   margin: 2rem auto;
@@ -168,6 +184,16 @@
   box-shadow: 0 24px 80px rgb(0 0 0 / 22%);
 }
 
+.app-shell.is-gallery .photo-modal-backdrop {
+  background: rgb(32 20 18 / 88%);
+}
+
+.app-shell.is-gallery .photo-modal {
+  border: 1px solid rgb(223 184 148 / 32%);
+  background: #4b302b;
+  box-shadow: 0 24px 80px rgb(16 10 9 / 52%);
+}
+
 .photo-modal-toolbar {
   display: flex;
   min-height: 3.5rem;
@@ -176,6 +202,15 @@
   padding: 0.5rem 0.8rem 0.5rem 1rem;
   color: var(--rose-deep);
   font-family: var(--serif);
+}
+
+.app-shell.is-gallery .photo-modal-toolbar {
+  color: #fff0e5;
+}
+
+.app-shell.is-gallery .photo-modal-toolbar .icon-button {
+  background: #f1e3d5;
+  color: #563730;
 }
 
 .icon-button {
@@ -201,6 +236,11 @@
   place-items: center;
   touch-action: pan-y;
   background: #f2e6df;
+}
+
+.app-shell.is-gallery .photo-modal-content {
+  background:
+    radial-gradient(ellipse at center, #563730, #382827 78%);
 }
 
 .modal-image {
@@ -240,6 +280,15 @@
 .modal-arrow-previous { left: 0.7rem; }
 .modal-arrow-next { right: 0.7rem; }
 
+.app-shell.is-gallery .modal-arrow {
+  background: rgb(255 240 229 / 91%);
+  color: #563730;
+}
+
+.app-shell.is-gallery .modal-arrow:disabled {
+  color: #78635a;
+}
+
 .photo-modal-note {
   max-height: 8rem;
   margin: 0;
@@ -251,9 +300,22 @@
   text-align: center;
 }
 
+.app-shell.is-gallery .photo-modal-note {
+  background: #4b302b;
+  color: #fff0e5;
+}
+
+.app-shell.is-gallery .modal-image-fallback {
+  color: #fff0e5;
+}
+
 .passcode-backdrop {
   z-index: 20;
   background: rgb(72 49 54 / 52%);
+}
+
+.app-shell.is-surprise .passcode-backdrop {
+  background: rgb(63 49 12 / 62%);
 }
 
 .passcode-dialog {
@@ -265,6 +327,51 @@
   background: #fffaf5;
   box-shadow: 0 24px 80px rgb(0 0 0 / 20%);
   text-align: center;
+}
+
+.app-shell.is-surprise .passcode-dialog {
+  border-color: #d6b852;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgb(255 250 220 / 95%), transparent 70%),
+    #fff8df;
+  box-shadow:
+    0 24px 80px rgb(40 30 7 / 30%),
+    inset 0 0 0 5px rgb(227 204 123 / 22%);
+}
+
+.app-shell.is-surprise .passcode-dialog h2 {
+  color: #4b3b17;
+}
+
+.app-shell.is-surprise .passcode-dialog .eyebrow {
+  color: #805d0b;
+}
+
+.app-shell.is-surprise .passcode-dialog > p:not(.eyebrow) {
+  color: #756333;
+}
+
+.app-shell.is-surprise .passcode-close {
+  background: #f4e5a9;
+  color: #76540b;
+}
+
+.app-shell.is-surprise .passcode-dialog input {
+  border-color: #dfc66c;
+  background: #fffdf4;
+  color: #4b3b17;
+}
+
+.app-shell.is-surprise .passcode-dialog input:focus-visible {
+  outline-color: #9b7414;
+}
+
+.app-shell.is-surprise .passcode-dialog .button-primary {
+  background: #76540b;
+}
+
+.app-shell.is-surprise .passcode-dialog .button-primary:hover {
+  background: #5f4308;
 }
 
 .passcode-dialog h2 {
@@ -306,10 +413,37 @@
   text-align: center;
 }
 
+.passcode-dialog input[aria-invalid="true"] {
+  border-color: #b63f58;
+  background: #fff5f5;
+  box-shadow: 0 0 0 3px rgb(182 63 88 / 12%);
+}
+
 .form-error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
   margin: 0;
-  color: #9d2f48;
+  padding: 0.7rem 0.8rem;
+  border: 1px solid rgb(182 63 88 / 28%);
+  border-radius: 0.65rem;
+  background: #fff0f1;
+  color: #8f263e;
   font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.form-error span {
+  display: grid;
+  width: 1.3rem;
+  height: 1.3rem;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 50%;
+  background: #a8324b;
+  color: white;
+  font-weight: 700;
 }
 
 @media (max-width: 480px) {
